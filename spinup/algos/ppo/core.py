@@ -27,6 +27,7 @@ def placeholders_from_spaces(*args):
     return [placeholder_from_space(space) for space in args]
 
 def mlp(x, hidden_sizes=(32,), activation=tf.tanh, output_activation=None):
+    x = tf.reshape(x, [-1, np.prod(x.shape[1:])])
     for h in hidden_sizes[:-1]:
         x = tf.layers.dense(x, units=h, activation=activation)
     return tf.layers.dense(x, units=hidden_sizes[-1], activation=output_activation)

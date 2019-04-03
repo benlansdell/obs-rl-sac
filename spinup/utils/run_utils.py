@@ -151,8 +151,13 @@ def call_experiment(exp_name, thunk, seed=0, num_cpu=1, data_dir=None,
         # Make 'env_fn' from 'env_name'
         if 'env_name' in kwargs:
             import gym
+            import gym_minigrid
             env_name = kwargs['env_name']
-            kwargs['env_fn'] = lambda : gym.make(env_name)
+            if "MiniGrid" in env_name:
+                #kwargs['env_fn'] = lambda : gym.wrappers.FlattenDictWrapper(gym.make(env_name))
+                kwargs['env_fn'] = lambda : gym_minigrid.wrappers.ImgObsWrapper(gym.make(env_name))
+            else:
+                kwargs['env_fn'] = lambda : gym.make(env_name)
             del kwargs['env_name']
 
         # Fork into multiple processes

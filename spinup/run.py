@@ -9,7 +9,7 @@ import os.path as osp
 import string
 import tensorflow as tf
 from textwrap import dedent
-
+import gym_minigrid
 
 # Command line args that will go to ExperimentGrid.run, and must possess unique
 # values (therefore must be treated separately).
