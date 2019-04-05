@@ -1,3 +1,7 @@
+#Set available GPUs
+import os
+os.environ["CUDA_VISIBLE_DEVICES"]="0"
+
 import spinup
 from spinup.utils.run_utils import ExperimentGrid
 from spinup.utils.serialization_utils import convert_json
