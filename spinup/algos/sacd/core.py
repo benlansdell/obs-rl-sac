@@ -126,7 +126,7 @@ def mlp_actor_critic(x, a, hidden_sizes=(400,300), activation=tf.nn.relu,
         v = vf_mlp(x)
     return mu, pi, logp_pi, q1, q2, q1_pi, q2_pi, v
 
-def mlp_actor_critic_discrete(x, a, hidden_sizes=(400,300), activation=tf.nn.relu, 
+def mlp_actor_critic_discrete(x, a, hidden_sizes=(100,10), activation=tf.nn.relu, 
                      output_activation=None, policy=mlp_categorical_policy, action_space=None):
     # policy
     with tf.variable_scope('pi'):

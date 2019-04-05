@@ -45,7 +45,7 @@ Soft Actor-Critic with Discrete actions
 
 """
 def sacd(env_fn, actor_critic=core.mlp_actor_critic_discrete, ac_kwargs=dict(), seed=0, 
-        steps_per_epoch=5000, epochs=100, replay_size=int(1e6), gamma=0.99, 
+        steps_per_epoch=5000, epochs=100, replay_size=int(1e3), gamma=0.99, 
         polyak=0.995, lr=1e-3, alpha=0.2, batch_size=100, start_steps=10000, 
         max_ep_len=1000, logger_kwargs=dict(), save_freq=1):
     """
@@ -143,8 +143,6 @@ def sacd(env_fn, actor_critic=core.mlp_actor_critic_discrete, ac_kwargs=dict(), 
 
     # Inputs to computation graph
     x_ph, a_ph, x2_ph, r_ph, d_ph = core.placeholders(obs_dim, None, obs_dim, None, None)
-    #x_ph, x2_ph, r_ph, d_ph = core.placeholders(obs_dim, obs_dim, None, None)
-    #a_ph = core.placeholders_int(None)[0]
 
     # Main outputs from computation graph
     with tf.variable_scope('main'):
